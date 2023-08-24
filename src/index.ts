@@ -1,4 +1,6 @@
-export * as Types from './type';
-export * as Deploy from './deploy';
+export * as Types from "./type";
+import * as Deploy from "./deploy";
 
-export default {};
+export { Deploy };
+
+export default Deploy;
