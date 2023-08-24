@@ -6,12 +6,16 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexys-system/api-gen-package"
+  },
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" "
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Nexys Sarl",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^5.2.2"
   },
