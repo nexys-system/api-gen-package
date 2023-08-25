@@ -56,11 +56,17 @@ export interface SQLBlock {
   statement: string;
 }
 
+export interface WasmBlock {
+  name: string; // name/path of wasm
+  method: string; // method to be called
+}
+
 export interface BlockWrap {
   chainBlockMap?: ChainBlockMap;
   crud?: CrudBlock;
   sql?: SQLBlock;
   codeSnippet?: CodeSnippetBlock;
+  wasm?: WasmBlock;
   operator?: {
     condition: string;
     nextTrue?: number;
