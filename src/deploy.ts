@@ -1,9 +1,8 @@
 import JWT from "jsonwebtoken";
 import * as T from "./type";
+import * as C from "./config";
 import { getFolderToZip } from "./zip-utils";
 import { decodeToken } from "./token-utils";
-
-const host = "https://app.nexys.io/api";
 
 export const deployApi = async (
   payload: {
@@ -25,7 +24,7 @@ export const deployApi = async (
     instance: { uuid: instanceUuid },
   });
 
-  const response = await fetch(host + "/product/backend/upload", {
+  const response = await fetch(C.host + "/product/backend/upload", {
     method: "POST",
     headers: { "content-type": "application/json", token },
     body,
@@ -41,7 +40,7 @@ export const sendBackendAssets = async (folderPath: string, token: string) => {
   const body = new FormData();
   body.set("file", blob);
 
-  const url = host + "/product/backend/upload-assets";
+  const url = C.host + "/product/backend/upload-assets";
   const response = await fetch(url, {
     method: "POST",
     body,

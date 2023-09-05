@@ -50,6 +50,8 @@ export interface CrudBlock {
   references?: {};
   data?: {};
   order?: QueryOrder;
+  take?: number;
+  skip?: number;
 }
 
 export interface SQLBlock {
@@ -57,7 +59,7 @@ export interface SQLBlock {
 }
 
 export interface WasmBlock {
-  name: string; // name/path of wasm
+  name: string; // name/path of wasm module
   method: string; // method to be called
 }
 
@@ -73,8 +75,7 @@ export interface BlockWrap {
     nextFalse?: number;
   };
   stop?: boolean; // aborts execution
-  status?: number;
-  // todo out status, 400, etc?
+  status?: number; // out status, 400, etc? default 200
 }
 
 type EndpointIn = "params" | "query" | "headers" | "body" | "jwtAuthorization";
@@ -114,4 +115,5 @@ export interface Info {
   description?: string;
   title: string;
   version: string;
+  servers?: { url: string }[]; // adds additional servers, in case the API is deployed under a different URL
 }

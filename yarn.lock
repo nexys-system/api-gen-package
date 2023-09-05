@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@nexys/openai-client@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@nexys/openai-client/-/openai-client-0.0.8.tgz#ec7648cbfc182d7375d598f3a0194ebddd45690d"
+  integrity sha512-k7k0JsTdpeH9/k3nTaYNGEaJ4RskIDswloxhqUvgw6KgzzyD2c8ygFi9Q2EaKsBP6juoqot9V/laIPZkSj2MvQ==
+
 "@nexys/validation@^2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nexys/validation/-/validation-2.1.5.tgz#187aa5cf3e8cfe240ded58dbca042d83732ba076"
