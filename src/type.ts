@@ -116,4 +116,5 @@ export interface Info {
   title: string;
   version: string;
   servers?: { url: string }[]; // adds additional servers, in case the API is deployed under a different URL
+  options?: { slackWebHook?: string };
 }
