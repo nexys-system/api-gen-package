@@ -12,13 +12,25 @@ export const getAPIEndpointFromLLM = async (
   message: string,
   openApiKey: string
 ) => {
+  const schemaEndpoint = {
+    $schema: "http://json-schema.org/draft-07/schema#",
+    type: "object",
+    properties: {
+      typescriptCode: {
+        type: "string",
+      },
+      description: {
+        type: "string",
+      },
+    },
+  };
   const userPrompt: Message = { role: "user", content: message };
   const messages: Message[] = [Prompts.systemPrompt, userPrompt];
   const functions: PayloadFunction[] = [
     {
       name: "insert_endpoint",
       description: "inserts endpoint into db",
-      parameters: schema as any,
+      parameters: schemaEndpoint as any,
     },
   ];
 

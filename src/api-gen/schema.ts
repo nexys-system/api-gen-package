@@ -80,7 +80,7 @@ const schemaEndpoint = {
             },
             required: ["code"],
           },
-          operator: {
+          /*   operator: {
             type: "object",
             properties: {
               condition: {
@@ -97,7 +97,7 @@ const schemaEndpoint = {
           },
           stop: {
             type: "boolean",
-          },
+          },*/
           status: {
             type: "number",
           },

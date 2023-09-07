@@ -24,6 +24,7 @@
     "@nexys/validation": "^2.1.5",
     "@types/jsonwebtoken": "^9.0.2",
     "jsonwebtoken": "^9.0.1",
-    "node-zip": "^1.1.1"
+    "node-zip": "^1.1.1",
+    "dotenv": "^16.3.1"
   }
 }

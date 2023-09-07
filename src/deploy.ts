@@ -4,6 +4,12 @@ import * as C from "./config";
 import { getFolderToZip } from "./zip-utils";
 import { decodeToken } from "./token-utils";
 
+/**
+ * deploy API
+ * @param payload
+ * @param token
+ * @returns
+ */
 export const deployApi = async (
   payload: {
     info: T.Info;
@@ -33,6 +39,13 @@ export const deployApi = async (
   return response.json();
 };
 
+/**
+ * send assets belonging to the API
+ * especially relevant for WASM
+ * @param folderPath
+ * @param token
+ * @returns
+ */
 export const sendBackendAssets = async (folderPath: string, token: string) => {
   const fileContent = await getFolderToZip(folderPath);
 
