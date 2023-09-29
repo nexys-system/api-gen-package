@@ -111,10 +111,17 @@ export interface State {
   out: StateOut;
 }
 
+export const enum Env {
+    prod = 3,
+    test = 2,
+    dev = 1
+}
+
 export interface Info {
   description?: string;
   title: string;
   version: string;
   servers?: { url: string }[]; // adds additional servers, in case the API is deployed under a different URL
   options?: { slackWebHook?: string };
+  env?: Env;
 }
