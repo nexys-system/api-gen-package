@@ -5,3 +5,7 @@
 [![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
 SDK to generate APIs, see [nexys.io](https://nexys.io)
+
+## Template to get started
+
+https://github.com/nexys-system/api-gen-template
