@@ -111,7 +111,7 @@ export interface State {
   out: StateOut;
 }
 
-export declare enum Env {
+export const enum Env {
     prod = 3,
     test = 2,
     dev = 1
