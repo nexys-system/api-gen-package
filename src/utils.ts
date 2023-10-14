@@ -1,3 +1,4 @@
+import readline from 'readline';
 import { Env } from './type';
 
 export const getSubdomain = (env: Env) => {
@@ -22,3 +23,18 @@ export const getHost = (
 
   return `${protocol}://${subdomain}.${domain}.${tld}`;
 };
+
+export const askForConfirmation = (): Promise<boolean> => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  return new Promise((resolve) =>
+    rl.question("Are you sure you would like to proceed?", (answer: string) => {
+      rl.close();
+      const yesNo: boolean = answer.toLowerCase().trim() === "yes";
+      resolve(yesNo);
+    })
+  );
+}
