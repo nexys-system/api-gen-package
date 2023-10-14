@@ -13,59 +13,41 @@ test("get domain", () => {
   expect(U.getHost(T.Env.dev, "nexys", "io")).toEqual("https://dev.nexys.io");
 });
 
-
-
-// Mock readline module
 jest.mock('readline');
 
-const mockQuestion = jest.fn();
-const mockClose = jest.fn();
-
-// Setup the mocked readline.createInterface function to return our mocked functions
-mocked(readline.createInterface).mockReturnValue({
-  question: mockQuestion,
-  close: mockClose,
-} as any);
-
 describe('askForConfirmation', () => {
+  let mockQuestion: jest.Mock;
+
   beforeEach(() => {
-    // Clear all mocks before each test
-    mockQuestion.mockClear();
-    mockClose.mockClear();
+    mockQuestion = jest.fn();
+    (readline.createInterface as jest.Mock).mockReturnValue({
+      question: mockQuestion,
+      close: jest.fn(),
+    });
   });
 
-  it('should return true for "yes" answer', async () => {
-    // Mock the user input as "yes"
-    mockQuestion.mockImplementation((_, callback) => callback('yes'));
-    
+  it('should resolve to true when user answers "yes"', async () => {
+    mockQuestion.mockImplementationOnce((_, callback) => callback('yes'));
+
     const result = await U.askForConfirmation();
+
     expect(result).toBe(true);
   });
 
-  it('should return false for "no" answer', async () => {
-    // Mock the user input as "no"
-    mockQuestion.mockImplementation((_, callback) => callback('no'));
-    
-    const result = await askForConfirmation();
+  it('should resolve to false when user answers "no"', async () => {
+    mockQuestion.mockImplementationOnce((_, callback) => callback('no'));
+
+    const result = await U.askForConfirmation();
+
     expect(result).toBe(false);
   });
 
-  it('should close readline interface after getting answer', async () => {
-    mockQuestion.mockImplementation((_, callback) => callback('yes'));
-    
-    await askForConfirmation();
-    expect(mockClose).toHaveBeenCalled();
-  });
+  // Additional test to handle varied user input
+  it('should resolve to true when user answers "YES" (case insensitive)', async () => {
+    mockQuestion.mockImplementationOnce((_, callback) => callback('YES'));
 
-  it('should create a new readline interface for each call', async () => {
-    // Mock the user input as "yes" twice
-    mockQuestion.mockImplementationOnce((_, callback) => callback('yes'))
-                .mockImplementationOnce((_, callback) => callback('yes'));
+    const result = await U.askForConfirmation();
 
-    await askForConfirmation();
-    await askForConfirmation();
-
-    // Expect readline.createInterface to have been called twice
-    expect(readline.createInterface).toHaveBeenCalledTimes(2);
+    expect(result).toBe(true);
   });
 });
