@@ -1,5 +1,4 @@
 import readline from 'readline';
-import { mocked } from 'ts-jest/utils';
 import * as U from "./utils";
 import * as T from "./type";
 
