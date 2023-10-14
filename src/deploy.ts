@@ -1,8 +1,26 @@
+import readline from 'readline';
 import JWT from "jsonwebtoken";
 import * as T from "./type";
 import * as C from "./config";
 import { getFolderToZip } from "./zip-utils";
 import { decodeToken } from "./token-utils";
+
+const askForConfirmation = (): Promise<boolean> => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  return new Promise((resolve) =>
+    rl.question("Are you sure you would like to proceed?", (answer: string) => {
+      rl.close();
+      const yesNo: boolean = answer.toLowerCase().trim() === "yes";
+      resolve(yesNo);
+    })
+  );
+}
+
+
 
 /**
  * deploy API
@@ -23,6 +41,12 @@ export const deployApi = async (
   token: string
 ) => {
   const { instanceUuid, productId } = decodeToken(payload.token);
+
+  const yesNo = await askForConfirmation();
+
+  if(!yesNo) {
+    throw Error('process aborted');
+  }
 
   const body = JSON.stringify({
     data: JSON.stringify(payload), // "data" is given as string
