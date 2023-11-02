@@ -123,6 +123,10 @@ export interface InfoEmailConfig {
   apiKey: string;
 }
 
+export interface Server {
+  url: string;
+}
+
 export interface Info {
   description?: string;
   title: string;
