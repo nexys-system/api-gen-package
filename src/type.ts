@@ -117,11 +117,21 @@ export const enum Env {
     dev = 1
 }
 
+export interface InfoEmailConfig {
+  from_email: string;
+  from_name: string;
+  apiKey: string;
+}
+
 export interface Info {
   description?: string;
   title: string;
   version: string;
-  servers?: { url: string }[]; // adds additional servers, in case the API is deployed under a different URL
-  options?: { slackWebHook?: string };
+  servers?: Server[];
+  options?: {
+    slackWebHook?: string;
+    emailConfig?: InfoEmailConfig;
+    signupEmail?: { subject: string; body: string }; // :activationToken
+  };
   env?: Env;
 }
