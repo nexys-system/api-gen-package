@@ -65,12 +65,18 @@ export interface WasmBlock {
   method: string; // method to be called
 }
 
+export interface GraphQLBlock {
+  query:string,
+  variables?: any
+}
+
 export interface BlockWrap {
   chainBlockMap?: ChainBlockMap;
   crud?: CrudBlock;
   sql?: SQLBlock;
   codeSnippet?: CodeSnippetBlock;
   wasm?: WasmBlock;
+  graphQL?: GraphQLBlock;
   operator?: {
     condition: string;
     nextTrue?: number;
