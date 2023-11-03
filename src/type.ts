@@ -1,6 +1,8 @@
 // this should be in a library
 import * as V from "@nexys/validation";
 
+export declare type DatabaseType = "MySQL" | "PostgreSQL";
+
 export interface CodeSnippetBlock {
   code?: string;
   ts?: string;
@@ -136,6 +138,7 @@ export interface Info {
     slackWebHook?: string;
     emailConfig?: InfoEmailConfig;
     signupEmail?: { subject: string; body: string }; // :activationToken
+    databaseType?: DatabaseType
   };
   env?: Env;
 }
