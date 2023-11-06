@@ -14,7 +14,6 @@ import { askForConfirmation } from "./utils";
 export const deployApi = async (
   payload: {
     info: T.Info;
-    token: string;
     jwtSecret:
       | string
       | { publicKey: string; privateKey: string; algorithm: JWT.Algorithm };
@@ -23,7 +22,7 @@ export const deployApi = async (
   },
   token: string
 ) => {
-  const { instanceUuid, productId } = decodeToken(payload.token);
+  const { instanceUuid, productId } = decodeToken(token);
 
   const yesNo = await askForConfirmation();
 
