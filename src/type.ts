@@ -135,6 +135,11 @@ export interface Server {
   url: string;
 }
 
+export interface EmailTemplate {
+  subject: string;
+  body: string;
+}
+
 export interface Info {
   description?: string;
   title: string;
@@ -143,7 +148,8 @@ export interface Info {
   options?: {
     slackWebHook?: string;
     emailConfig?: InfoEmailConfig;
-    signupEmail?: { subject: string; body: string }; // :activationToken
+    signupEmail?: EmailTemplate; // :activationToken
+    forgotPasswordEmail?: EmailTemplate;
     databaseType?: DatabaseType
   };
   env?: Env;
