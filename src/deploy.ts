@@ -31,7 +31,7 @@ export const deployApi = async (
   }
 
   const body = JSON.stringify({
-    data: JSON.stringify(payload), // "data" is given as string
+    data: JSON.stringify({...payload, token}), // "data" is given as string
     product: { id: productId },
     instance: { uuid: instanceUuid },
   });
