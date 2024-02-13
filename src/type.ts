@@ -145,6 +145,7 @@ export interface Info {
   title: string;
   version: string;
   servers?: Server[];
+  isMultiTenant?: boolean;
   options?: {
     slackWebHook?: string;
     emailConfig?: InfoEmailConfig;
