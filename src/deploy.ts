@@ -20,7 +20,8 @@ export const deployApi = async (
     endpoints: T.Endpoint[];
     oAuthParamsArray: T.OAuthParams[];
   },
-  token: string
+  token: string,
+  host:string = C.host
 ) => {
   const { instanceUuid, productId } = decodeToken(token);
 
@@ -36,7 +37,7 @@ export const deployApi = async (
     instance: { uuid: instanceUuid },
   });
 
-  const response = await fetch(C.host + "/product/backend/upload", {
+  const response = await fetch(host + "/product/backend/upload", {
     method: "POST",
     headers: { "content-type": "application/json", token },
     body,
